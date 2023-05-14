@@ -50,3 +50,13 @@ export interface ISlideCardItemProps {
   styles: ISlideCardStyles;
   colors: any;
 }
+
+//
+
+export type IStylePassword = {
+  passwordChecker: object;
+};
+export interface IPasswordHolder {
+  styles: IStylePassword;
+  stepChecker: Function;
+}

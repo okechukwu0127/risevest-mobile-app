@@ -93,8 +93,9 @@ function OnBoarding({navigation}: IProps) {
         activeDotColor={currentActiveColor}
         dotStyle={styles.dot}
         activeDotStyle={styles.dot}>
-        {slides.map(item => (
+        {slides.map((item, index) => (
           <SlideCard
+            key={index}
             item={item}
             index={randNumber()}
             currentActiveColor={currentActiveColor}

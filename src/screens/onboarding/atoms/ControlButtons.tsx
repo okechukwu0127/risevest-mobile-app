@@ -14,10 +14,10 @@ const ControlButtons = ({
   currentActiveColor,
   navigation,
 }: IControlButton) => {
-  const {home, splash} = stack.stack;
+  const {home, signUp} = stack.stack;
 
   const handleSignUpPress = () => {
-    navigation.navigate(splash);
+    navigation.navigate(signUp);
   };
 
   const handleLoginPress = () => {
