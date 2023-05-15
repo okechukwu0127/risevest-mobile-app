@@ -78,7 +78,9 @@ export default function CustomInput(props: any) {
             },
           ]}
           placeholder={placeholder}
-          secureTextEntry={!changeVisibility}
+          secureTextEntry={
+            keyboardType === 'email-address' ? false : !changeVisibility
+          }
           onChangeText={onChangeText}
           value={value}
           autoCorrect={false}
