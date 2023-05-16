@@ -29,10 +29,6 @@ function SignUpTwo({navigation}: IProps) {
     lastName: yup.string().required('Email address is required'),
     firstName: yup.string().required('Password field is required'),
     nickName: yup.string(), //.required('Password field is required'),
-
-    //.matches(/(?=.*[A-Z])/, getCharacterValidationError('Uppercase'))
-    //One unique character (e.g: !@#$%^&*?)
-    //.matches(/(?=.*[!@#\$%\^&\*?])/, getCharacterValidationError('Unique')),
   });
 
   const {
@@ -78,8 +74,6 @@ function SignUpTwo({navigation}: IProps) {
     setListData(list);
   };
 
-  // console.log(listData);
-
   useEffect(() => {
     CountryList();
     setCountryCode(
@@ -107,8 +101,6 @@ function SignUpTwo({navigation}: IProps) {
     setCountryName(countryValue_);
   };
 
-  //console.log(listData.slice(0, 2));
-
   return (
     <ScrollView scrollEnabled={false} contentContainerStyle={styles.pb250}>
       <View style={styles.container}>
@@ -134,13 +126,9 @@ function SignUpTwo({navigation}: IProps) {
                   label={'Legal First Name'}
                   value={value}
                   placeholder="Legal First Name"
-                  //backgroundColor={config.themeDefault.COLORS.profileInput}
                   error={errors.firstName?.message}
                   editable={true}
-                  // onBlur={onBlur}
-                  //onFocus={onFocus}
                   inputType="text"
-                  //icon="eye-off-sharp"
                   keyboardType={'ascii-capable'}
                 />
               )}
@@ -157,13 +145,9 @@ function SignUpTwo({navigation}: IProps) {
                   label={'Legal Last Name'}
                   value={value}
                   placeholder="Legal Last Name"
-                  //backgroundColor={config.themeDefault.COLORS.profileInput}
                   error={errors.email?.message}
                   editable={true}
-                  // onBlur={onBlur}
-                  //onFocus={onFocus}
                   inputType="text"
-                  //icon="eye-off-sharp"
                   keyboardType={'ascii-capable'}
                 />
               )}
@@ -180,13 +164,9 @@ function SignUpTwo({navigation}: IProps) {
                   label={'Nick Name'}
                   value={value}
                   placeholder="Nick Name"
-                  //backgroundColor={config.themeDefault.COLORS.profileInput}
                   error={errors.email?.message}
                   editable={true}
-                  // onBlur={onBlur}
-                  //onFocus={onFocus}
                   inputType="text"
-                  //icon="eye-off-sharp"
                   keyboardType={'ascii-capable'}
                 />
               )}
@@ -237,15 +217,12 @@ function SignUpTwo({navigation}: IProps) {
                   render={({field: {onChange, onBlur, value}}) => (
                     <TextInput
                       onChangeText={onChange}
-                      // label={'Nick Name'}
                       value={value}
                       hideBorder={true}
-                      //backgroundColor={config.themeDefault.COLORS.profileInput}
                       error={errors.phone?.message}
                       editable={true}
                       placeholder="000 000 000"
                       inputType="text"
-                      //icon="eye-off-sharp"
                       keyboardType={'phone-pad'}
                     />
                   )}
