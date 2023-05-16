@@ -20,6 +20,9 @@ import {yupResolver} from '@hookform/resolvers/yup';
 import stack from '../../constants/routes';
 import {styles} from './styles';
 import countriesPhone from '../../../assets/countriesPhone';
+import DatePicker from '../../components/datePicker';
+import {DatePickerModal} from 'react-native-paper-dates';
+
 interface IProps {
   navigation: NavigationProp<ParamListBase>;
 }
@@ -52,7 +55,23 @@ function SignUpTwo({navigation}: IProps) {
   const [countryCode, setCountryCode] = useState('');
   const [countryFlag, setCountryFlag] = useState('');
   const [countryName, setCountryName] = useState('');
+  const [openDate, setOpenDate] = useState(false);
+  const [dateLable, setDateLabel] = useState('');
+  const [date, setDate] = useState(new Date());
 
+  const onDismissSingle = React.useCallback(() => {
+    setOpenDate(false);
+  }, [setOpenDate]);
+
+  const onConfirmSingle = React.useCallback(
+    (params: any) => {
+      console.log(params.date, 'data');
+      setDate(params.date);
+      setDateLabel(params.date.toDateString());
+      setOpenDate(false);
+    },
+    [setOpenDate, setDate],
+  );
   useEffect(() => {
     if (getState) {
       setBorderColor(colors.riseDarkGreen);
@@ -230,6 +249,37 @@ function SignUpTwo({navigation}: IProps) {
                 />
               </View>
             </View>
+          </View>
+
+          <View
+            style={[
+              styles.numberStyle,
+              styles.numberSTyle2,
+              {
+                borderColor: borderColor,
+                minHeight: 50,
+              },
+            ]}>
+            {openDate && (
+              <View style={styles.labelHolder}>
+                <Text style={styles.labelText}>Date of Birth</Text>
+              </View>
+            )}
+
+            <DatePickerModal
+              mode="single"
+              visible={openDate}
+              onDismiss={onDismissSingle}
+              date={date}
+              onConfirm={onConfirmSingle}
+            />
+
+            <DatePicker
+              // backgroundColor={colors.profileInput}
+              dateValue={dateLable}
+              label={'Started Date'}
+              onPress={() => setOpenDate(true)}
+            />
           </View>
         </View>
       </View>
