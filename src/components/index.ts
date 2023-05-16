@@ -14,3 +14,4 @@ export {default as NavigationHeader} from './navigationHeader';
 export {default as ProductTypeCard} from './productTypeCard';
 export {default as FocusAwareStatusBar} from './focusAwareStatusBar';
 export {default as TextInput} from './CustomInput';
+export {default as CustomPicker} from './CustomPicker';

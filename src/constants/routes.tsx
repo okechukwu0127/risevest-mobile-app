@@ -4,6 +4,7 @@ export default {
     home: 'Home',
     splash: 'Splash',
     signUp: 'SignUp',
+    signUpTwo: 'SignUpTwo',
     productDetails: 'ProductDetails',
   },
 };

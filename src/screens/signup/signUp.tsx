@@ -1,32 +1,26 @@
-import React, {useState} from 'react';
-import {View, StyleSheet, ScrollView} from 'react-native';
+import React from 'react';
+import {View, ScrollView} from 'react-native';
 import {NavigationProp, ParamListBase} from '@react-navigation/native';
-import {
-  FocusAwareStatusBar,
-  H4,
-  H5,
-  H3,
-  Button,
-  Icon,
-  TextInput,
-} from '../../components';
-import {colors, HP, spacing, WP} from '../../constants';
+import {FocusAwareStatusBar, H5, H3, Button, TextInput} from '../../components';
+import {colors} from '../../constants';
 import {useForm, Controller, useWatch} from 'react-hook-form';
 import * as yup from 'yup';
 import {yupResolver} from '@hookform/resolvers/yup';
 
-import stack from '../../constants/routes';
 import PasswordHolder from './atoms/PasswordHolder';
+import {styles} from './styles';
+import stack from '../../constants/routes';
 
 interface IProps {
   navigation: NavigationProp<ParamListBase>;
 }
 
-const getCharacterValidationError = (str: string) => {
-  return `Your password must have at least 1 ${str} character`;
-};
-
 function SignUp({navigation}: IProps) {
+  const {signUpTwo} = stack.stack;
+
+  const getCharacterValidationError = (str: string) => {
+    return `Your password must have at least 1 ${str} character`;
+  };
   const schema = yup.object().shape({
     email: yup
       .string()
@@ -70,8 +64,9 @@ function SignUp({navigation}: IProps) {
     return false;
   };
 
-  const onSubmit = async data => {
+  const onSubmit = async (data: any) => {
     console.log(data);
+    navigation.navigate(signUpTwo);
   };
   return (
     <ScrollView scrollEnabled={false} contentContainerStyle={styles.pb250}>
@@ -157,42 +152,3 @@ function SignUp({navigation}: IProps) {
   );
 }
 export default SignUp;
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: colors.white,
-    alignItems: 'flex-start',
-    height: HP('100%'),
-    paddingHorizontal: spacing.xxsmall + 10,
-    paddingTop: spacing.large,
-  },
-  pb250: {paddingBottom: 250},
-  spaceInline: {
-    marginVertical: 20,
-
-    //borderWidth: 1,
-    //borderColor: 'red',
-  },
-  passwordHolder: {
-    marginTop: spacing.xxsmall,
-  },
-
-  buttonHolder: {marginTop: spacing.small},
-  passwordChecker: {
-    flexDirection: 'row',
-    gap: 10,
-    justifyContent: 'flex-start',
-    marginVertical: 5,
-  },
-
-  formContainer: {
-    paddingVertical: 18,
-    width: WP('100%') - 46,
-    marginTop: 20,
-  },
-  searchInputContainer: {
-    marginTop: spacing.xsmall,
-    marginBottom: spacing.xsmall,
-    marginHorizontal: spacing.xxsmall,
-  },
-});

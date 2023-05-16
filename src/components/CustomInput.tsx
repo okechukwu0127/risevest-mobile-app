@@ -3,12 +3,11 @@ import React, {useState} from 'react';
 import {
   View,
   Text,
-  Image,
   TouchableOpacity,
   TextInput,
   StyleSheet,
 } from 'react-native';
-import {colors, HP, WP} from '../constants';
+import {colors, WP} from '../constants';
 import Icon from './icon';
 
 //import config from '../../setting/config';
@@ -32,15 +31,11 @@ export default function CustomInput(props: any) {
     onFocus,
     style,
     //secureTextEntry,
-    multiline,
-    textArea,
     error,
     onBlur,
     keyboardType,
-    onLabelInfoClick,
     inputRef,
-    width,
-    textcolor,
+    hideBorder,
     editable,
   } = props;
 
@@ -73,13 +68,24 @@ export default function CustomInput(props: any) {
               ...styles.numberStyle,
               ...style,
               height: 40,
-              borderColor: error && error.length > 1 ? 'red' : borderColor,
+              borderColor:
+                error && error.length > 1
+                  ? 'red'
+                  : hideBorder
+                  ? colors.white
+                  : borderColor,
+              paddingLeft: hideBorder ? 40 : 'auto',
+              marginTop: hideBorder ? -10 : null,
               backgroundColor: backgroundColor,
             },
           ]}
           placeholder={placeholder}
           secureTextEntry={
-            keyboardType === 'email-address' ? false : !changeVisibility
+            keyboardType === 'email-address' ||
+            keyboardType === 'phone-pad' ||
+            keyboardType === 'ascii-capable'
+              ? false
+              : !changeVisibility
           }
           onChangeText={onChangeText}
           value={value}
@@ -89,6 +95,7 @@ export default function CustomInput(props: any) {
           autoCapitalize="none"
           multiline={false}
           onFocus={CustomFocus}
+          //keyboardType={keyboardType}
           onBlur={CustomBlur}
           ref={inputRef}
           editable={editable}

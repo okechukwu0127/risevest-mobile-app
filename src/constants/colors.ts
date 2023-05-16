@@ -23,4 +23,6 @@ export default {
   blurGreyButton: 'rgba(113, 135, 156, 0.1)',
   subTitle: '#71879C',
   inputColor: '#E1E8ED',
+  profileInput: '#eef6ff',
+  greyDark2: '#737373',
 };
