@@ -12,6 +12,7 @@ export default {
   greyVariantThree: '#f5f5f5',
   yellow: '#fbad39',
   riseDarkGreen: '#0898A0',
+  riseLightGreen: 'rgba(8, 152, 160, 0.4)',
   step1Bg: '#FEFAF7',
   step2Bg: '#FDF4F9',
   step3Bg: '#F6FFFE',
@@ -20,4 +21,8 @@ export default {
   activeStep3: '#0898A0',
   leftIconDisabled: '#94A1AD',
   blurGreyButton: 'rgba(113, 135, 156, 0.1)',
+  subTitle: '#71879C',
+  inputColor: '#E1E8ED',
+  profileInput: '#eef6ff',
+  greyDark2: '#737373',
 };

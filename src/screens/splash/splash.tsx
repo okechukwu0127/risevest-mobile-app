@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, Image, StatusBar} from 'react-native';
+import {View, StyleSheet, Image} from 'react-native';
 import {NavigationProp, ParamListBase} from '@react-navigation/native';
 import {FocusAwareStatusBar, H4, H6} from '../../components';
 import {colors, images, HP} from '../../constants';
@@ -16,7 +16,7 @@ function Splash({navigation}: IProps) {
     navigation.navigate(onboarding);
   }, 3000);
 
- // console.log(navigation);
+  // console.log(navigation);
   return (
     <View style={styles.container}>
       <FocusAwareStatusBar
