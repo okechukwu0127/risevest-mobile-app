@@ -103,8 +103,7 @@ const styles = StyleSheet.create({
 
     backgroundColor: colors.white,
     padding: 2,
-    //borderWidth: 1,
-    // borderColor: 'black',
+
     width: WP('35%'),
     height: 22,
   },
@@ -116,12 +115,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     alignItems: 'center',
     alignSelf: 'center',
-    fontSize: 15,
+    fontSize: 13,
     fontWeight: '700',
     color: colors.black,
     borderStyle: 'solid',
     borderWidth: 0.7,
-    //borderColor: 'black',
   },
   errorStyle: {
     fontSize: 12,

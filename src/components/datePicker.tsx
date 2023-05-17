@@ -1,43 +1,14 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, {useState} from 'react';
-import {
-  View,
-  Text,
-  Image,
-  TouchableOpacity,
-  TextInput,
-  StyleSheet,
-} from 'react-native';
+import React from 'react';
+import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import {colors, WP} from '../constants';
 import Icon from './icon';
 
-//import config from '../../setting/config';
-
 export default function DatePicker(props: any) {
-  const [borderColor, setBorderColor] = useState(colors.inputColor);
-  const [isFocus, setIsFocus] = useState(false);
-  const [changeVisibility, setChangeVisibility] = useState(false);
-
-  //
-
-  const {
-    dateValue,
-    error,
-    placeholder,
-    label,
-    backgroundColor,
-    placeholderColor,
-    onPress,
-  } = props;
+  const {dateValue, error, backgroundColor, placeholderColor, onPress} = props;
 
   return (
     <View style={styles.container}>
-      {label && isFocus && (
-        <View style={styles.labelHolder}>
-          <Text style={styles.labelText}>{label}</Text>
-        </View>
-      )}
-
       <View style={{flexDirection: 'column'}}>
         <View
           style={{
@@ -55,12 +26,14 @@ export default function DatePicker(props: any) {
             <Text
               style={{
                 ...styles.labelText,
-                //fontSize: 12,
+                //...styles.dateIcon,
                 color: placeholderColor ? placeholderColor : colors.black,
               }}>
               {dateValue}
             </Text>
-            <Icon name={'calendar'} size={25} color={colors.greyDark} />
+            <View style={styles.dateIcon}>
+              <Icon name={'calendar'} size={25} color={colors.riseDarkGreen} />
+            </View>
           </TouchableOpacity>
         </View>
       </View>
@@ -73,9 +46,6 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 40,
     justifyContent: 'center',
-    // borderColor: 'red',
-    // borderStyle: 'solid',
-    // borderWidth: 1,
     borderRadius: 10,
     paddingHorizontal: 14,
   },
@@ -91,7 +61,7 @@ const styles = StyleSheet.create({
     paddingTop: 3,
   },
   labelText: {
-    fontSize: 15,
+    fontSize: 13,
     fontWeight: '600',
     color: colors.riseDarkGreen,
     textAlign: 'left',
@@ -103,8 +73,6 @@ const styles = StyleSheet.create({
 
     backgroundColor: colors.white,
     padding: 2,
-    //borderWidth: 1,
-    // borderColor: 'black',
     width: WP('35%'),
     height: 22,
   },
@@ -121,12 +89,15 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     alignItems: 'center',
     alignSelf: 'center',
-    fontSize: 15,
+    fontSize: 13,
     fontWeight: '700',
     color: colors.black,
     borderStyle: 'solid',
     borderWidth: 0.7,
-    //borderColor: 'black',
+  },
+  dateIcon: {
+    marginRight: -26,
+    marginBottom: 10,
   },
   errorStyle: {
     fontSize: 12,

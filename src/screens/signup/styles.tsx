@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     height: HP('100%'),
     paddingHorizontal: spacing.xxsmall + 10,
     paddingTop: spacing.large,
-    //borderWidth: 1,
+
     //borderColor: 'red',
   },
   Lines: {
@@ -19,6 +19,9 @@ export const styles = StyleSheet.create({
     marginLeft: 18,
     marginTop: 5,
   },
+  h50: {
+    minHeight: 50,
+  },
   numberStyle: {
     minHeight: 70,
     borderRadius: 10,
@@ -26,12 +29,11 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 12,
     alignItems: 'center',
     alignSelf: 'center',
-    fontSize: 15,
+    fontSize: 13,
     fontWeight: '700',
     color: colors.black,
     //borderStyle: 'solid',
     //borderWidth: 0.7,
-    //borderColor: 'black',
   },
   numberSTyle2: {
     borderWidth: 1,
@@ -53,8 +55,7 @@ export const styles = StyleSheet.create({
 
     backgroundColor: colors.white,
     padding: 2,
-    //borderWidth: 1,
-    //borderColor: 'black',
+
     width: WP('35%'),
     height: 22,
   },
@@ -62,11 +63,10 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
   },
-  pb250: {paddingBottom: 250},
+  pb250: {paddingBottom: 450},
   spaceInline: {
     marginVertical: 20,
 
-    //borderWidth: 1,
     //borderColor: 'red',
   },
   passwordHolder: {
@@ -85,7 +85,7 @@ export const styles = StyleSheet.create({
     paddingVertical: 18,
     width: WP('100%') - 46,
     marginTop: 20,
-    //borderWidth: 1,
+
     //borderColor: 'red',
   },
   searchInputContainer: {

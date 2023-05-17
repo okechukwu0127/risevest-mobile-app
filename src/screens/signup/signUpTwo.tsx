@@ -1,19 +1,17 @@
 import React, {useEffect, useState} from 'react';
-import {View, StyleSheet, ScrollView} from 'react-native';
+import {View, ScrollView} from 'react-native';
 import {NavigationProp, ParamListBase} from '@react-navigation/native';
 import {
   FocusAwareStatusBar,
-  H4,
   H5,
   H3,
   Button,
-  Icon,
   TextInput,
   CustomPicker,
   Text,
 } from '../../components';
-import {colors, HP, spacing, WP} from '../../constants';
-import {useForm, Controller, useWatch} from 'react-hook-form';
+import {colors, WP} from '../../constants';
+import {useForm, Controller} from 'react-hook-form';
 import * as yup from 'yup';
 import {yupResolver} from '@hookform/resolvers/yup';
 
@@ -28,9 +26,13 @@ interface IProps {
 }
 
 function SignUpTwo({navigation}: IProps) {
+  const {splash} = stack.stack;
+
   const schema = yup.object().shape({
-    lastName: yup.string().required('Email address is required'),
-    firstName: yup.string().required('Password field is required'),
+    lastName: yup.string().required('lastName  is required'),
+    firstName: yup.string().required('firstName  is required'),
+    phone: yup.number().required('Phone is required'),
+
     nickName: yup.string(), //.required('Password field is required'),
   });
 
@@ -55,9 +57,11 @@ function SignUpTwo({navigation}: IProps) {
   const [countryCode, setCountryCode] = useState('');
   const [countryFlag, setCountryFlag] = useState('');
   const [countryName, setCountryName] = useState('');
+
   const [openDate, setOpenDate] = useState(false);
   const [dateLable, setDateLabel] = useState('');
   const [date, setDate] = useState(new Date());
+  const [listData, setListData] = useState<any[]>([]);
 
   const onDismissSingle = React.useCallback(() => {
     setOpenDate(false);
@@ -72,6 +76,7 @@ function SignUpTwo({navigation}: IProps) {
     },
     [setOpenDate, setDate],
   );
+
   useEffect(() => {
     if (getState) {
       setBorderColor(colors.riseDarkGreen);
@@ -80,7 +85,10 @@ function SignUpTwo({navigation}: IProps) {
     }
   }, [getState]);
 
-  const [listData, setListData] = useState<any[]>([]);
+  const onSubmit = async (data: any) => {
+    console.log(data);
+    navigation.navigate(splash);
+  };
 
   const CountryList = async () => {
     let list: any[] = [];
@@ -105,20 +113,6 @@ function SignUpTwo({navigation}: IProps) {
       countriesPhone.filter(obj => obj.name === 'Nigeria')[0].name,
     );
   }, []);
-
-  const selectCountry = country => {
-    let countryCode_ = countriesPhone.filter(obj => obj.name === country)[0]
-      .dial_code;
-    // Get the country flag
-    let countryFlag_ = countriesPhone.filter(obj => obj.name === country)[0]
-      .flag;
-    let countryValue_ = countriesPhone.filter(obj => obj.name === country)[0]
-      .name;
-
-    setCountryCode(countryCode_);
-    setCountryFlag(countryFlag_);
-    setCountryName(countryValue_);
-  };
 
   return (
     <ScrollView scrollEnabled={false} contentContainerStyle={styles.pb250}>
@@ -164,7 +158,7 @@ function SignUpTwo({navigation}: IProps) {
                   label={'Legal Last Name'}
                   value={value}
                   placeholder="Legal Last Name"
-                  error={errors.email?.message}
+                  error={errors.lastName?.message}
                   editable={true}
                   inputType="text"
                   keyboardType={'ascii-capable'}
@@ -183,7 +177,7 @@ function SignUpTwo({navigation}: IProps) {
                   label={'Nick Name'}
                   value={value}
                   placeholder="Nick Name"
-                  error={errors.email?.message}
+                  error={errors.nickName?.message}
                   editable={true}
                   inputType="text"
                   keyboardType={'ascii-capable'}
@@ -255,9 +249,9 @@ function SignUpTwo({navigation}: IProps) {
             style={[
               styles.numberStyle,
               styles.numberSTyle2,
+              styles.h50,
               {
                 borderColor: borderColor,
-                minHeight: 50,
               },
             ]}>
             {openDate && (
@@ -279,6 +273,17 @@ function SignUpTwo({navigation}: IProps) {
               dateValue={dateLable}
               label={'Started Date'}
               onPress={() => setOpenDate(true)}
+            />
+          </View>
+
+          <View style={[styles.buttonHolder]}>
+            <Button
+              text="Sign Up"
+              onPress={handleSubmit(onSubmit)}
+              textColor={colors.white}
+              backgroundColor={
+                true ? colors.riseDarkGreen : colors.riseLightGreen
+              }
             />
           </View>
         </View>
