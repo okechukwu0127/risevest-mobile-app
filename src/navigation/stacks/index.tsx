@@ -19,7 +19,7 @@ function Routes() {
           backgroundColor: colors.white,
         },
       }}
-      initialRouteName={signUpTwo}>
+      initialRouteName={splash}>
       <Stack.Screen
         options={{
           headerShown: false,
